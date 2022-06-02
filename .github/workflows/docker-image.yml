@@ -17,5 +17,4 @@ jobs:
     - name: Build the Docker image
       run: |
            docker build --file docker-publish-1. -t marwaezzat/jenkins_train:v1.10
-           docker login -u ${{DOCKER_USER_NAME}} -p ${{DOCKER_PASSWORD}}
            docker push marwaezzat/jenkins_train:v1.10
