@@ -36,7 +36,7 @@ jobs:
         run: |
             docker build --file  dockerfile -t marwaezzat/jenkins_train:v1.10
             docker login -u ${{secrets.DOCKER_USER_NAME}} -p ${{secrets.DOCKER_PASSWORD}}
-            docker push marwaezzat/jenkins_train:v1.10
+
         
 
 
