@@ -1,42 +1,20 @@
-name: Docker
+FROM  node:13.12.0-alpine
+WORKDIR /app
 
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
 
-on:
-  schedule:
-    - cron: '40 13 * * *'
-  push:
-    branches: [ master ]
-    # Publish semver tags as releases.
-    tags: [ 'v*.*.*' ]
-  pull_request:
-    branches: [ master ]
+# install app dependencies
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install --silent
+RUN npm install react-scripts@3.4.1 -g --silent
 
-env:
-  # Use docker.io for Docker Hub if empty
-  REGISTRY: ghcr.io
-  # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}
+# add app
+COPY . ./
 
-
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-   
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        
-      - name : run
-        run: |
-            docker build --file dockerfile  -t marwaezzat/jenkins_train:v1.10 
-            docker login -u ${{secrets.DOCKER_USER_NAME}} -p ${{secrets.DOCKER_PASSWORD}}
-
+# start app
+CMD ["npm", "start"]
         
 
 
