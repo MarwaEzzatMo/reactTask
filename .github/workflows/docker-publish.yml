@@ -36,6 +36,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        
+      - name : run
+        run: |
+            docker build --file  dockerfile -t marwaezzat/jenkins_train:v1.10
+            docker login -u ${{secrets.DOCKER_USER_NAME}} -p ${{secrets.DOCKER_PASSWORD}}
+            docker push marwaezzat/jenkins_train:v1.10
+        
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
