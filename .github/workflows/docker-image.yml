@@ -16,5 +16,5 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: |
-           docker build --file dockerfile -t marwaezzat/jenkins_train:v1.10
+           docker build -f  docker-image.yml -t marwaezzat/jenkins_train:v1.10
            docker push marwaezzat/jenkins_train:v1.10
