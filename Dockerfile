@@ -5,7 +5,7 @@ WORKDIR /app
 # install app dependencies
 COPY package*.json ./
 
-RUN npm install --force
+RUN npm install 
 
 
 # add app
