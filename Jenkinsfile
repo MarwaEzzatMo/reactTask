@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                 sh 'docker build -t react .'
             }
         }
         stage('Test') {
