@@ -1,22 +1,9 @@
-pipeline {
-    agent any
+node {
 
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-                 sh 'docker build -t react .'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-    }
+  stage 'Building docker env'
+  def dbImage = docker.build('image')
+
+
+
+
 }
