@@ -31,7 +31,7 @@ jobs:
 
     - name: Build, tag, and push image to Amazon ECR
       env:
-        ECR_REGISTRY:  804762321388.dkr.ecr.us-east-1.amazonaws.com
+        ECR_REGISTRY:  ${{secrets.registry_name}}
         ECR_REPOSITORY: react-task
         IMAGE_TAG: test
       run: |
