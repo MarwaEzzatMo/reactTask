@@ -7,7 +7,7 @@ COPY package*.json ./
 
 RUN npm install --force
 
-
+ENV test=test
 # add app
 COPY . ./
 
